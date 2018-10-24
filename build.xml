@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<!-- 
+ Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
+
+   NAME
+     build.xml - <one-line expansion of the name>
+
+   DESCRIPTION
+     <short description of component this file declares/defines>
+
+   NOTES
+     <other useful comments, qualifications, etc.>
+
+   MODIFIED   (MM/DD/YY)
+   nks         08/18/11 - Creation
+
+-->
+
+
+<!--
+ Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
+-->
+
+<project name="connector-sapum" default="javadoc">
+    <import file="../connector_build.xml"/> 
+	
+    <target name="publish_code_coverage" depends="load-label-properties">
+        <echo message="creating classes tar file for ${bundle.name} connector" />
+        <property file="pwv.properties" />
+        <property name="sapcoverage.file"  value="/net/slc04sop/scratch/smelgiri/sap_reports/sapum/coverage.exec"/>
+        <property name="sapclasses.tar.gz.file" value="/net/slc04sop/scratch/smelgiri/sap_reports/sapum/classes.tar.gz"/>
+          <echo message="${codeCoverageJar} -tool ${codeCoverageTool} -m ${sapclasses.tar.gz.file} -c ${sapcoverage.file} -r ${oim.release.version} -com ${code.coverage.component} -u ${connector.user} -jobname ${bundle.name}Connector -testt unit -stage devUnitTests -groupf ${groupsFile} -l ${VIEW_LABEL}" />
+          <java jar="${codeCoverageJar}" fork="true">
+            <arg line="-tool ${codeCoverageTool}" />
+            <arg line="-m ${sapclasses.tar.gz.file}" />
+            <arg line="-c ${sapcoverage.file}" />
+            <arg line="-r ${oim.release.version}"/>
+            <arg line="-l ${VIEW_LABEL}"/>
+            <arg line="-com ${code.coverage.component}"/>
+            <arg line="-u ${connector.user}"/>
+            <arg line="-jobname ${bundle.name}Connector" />
+            <arg line = "-testt unit" />
+            <arg line = "-stage devUnitTests" />
+            <arg line = "-groupf ${groupsFile}" />
+        </java>
+    </target>
+</project>
+

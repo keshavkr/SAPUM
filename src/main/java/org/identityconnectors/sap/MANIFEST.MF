@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.5.0_13-b05 (Sun Microsystems Inc.)
+ConnectorBundle-FrameworkVersion: 1.0
+ConnectorBundle-Name: org.identityconnectors.sap
+ConnectorBundle-Version: 2.0.0
+Build-Number: 206
+Subversion-Revision: 5948
